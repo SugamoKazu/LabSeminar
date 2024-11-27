@@ -17,7 +17,14 @@ public class HandMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
+    {
+        Move();
+        Swing();
+        
+    }
+
+    private void Move()
     {
         if(Input.GetKey("up"))
         {
@@ -37,6 +44,13 @@ public class HandMove : MonoBehaviour
         }
 
         myTransform.position = position;
-        
+    }
+
+    private void Swing()
+    {
+        if(Input.GetKey("space"))
+        {
+            
+        }
     }
 }

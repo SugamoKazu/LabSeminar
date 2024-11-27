@@ -17,7 +17,7 @@ public class MoleSpawn : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         int rnd = Random.Range(0,9);
         interval++;

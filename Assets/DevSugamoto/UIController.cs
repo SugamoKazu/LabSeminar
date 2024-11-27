@@ -36,6 +36,7 @@ public class UIController : MonoBehaviour
         else
         {
             Debug.Log("Fin");
+            Time.timeScale = 0;
         }
         
     }

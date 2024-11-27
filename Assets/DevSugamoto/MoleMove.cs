@@ -20,7 +20,7 @@ public class MoleMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         moveCount++;
         var moveVec = 0.1f;
@@ -46,5 +46,15 @@ public class MoleMove : MonoBehaviour
         myTransform.position = position;
 
 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Hammer")
+        {
+            //Debug.Log("Down");
+            myTransform.localScale = new Vector3(1, 0.1f, 1);
+            moveCount += 60;
+        }
     }
 }
