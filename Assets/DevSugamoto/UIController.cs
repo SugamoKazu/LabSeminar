@@ -7,6 +7,7 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI TextTime;
+    [SerializeField] private TextMeshProUGUI TextScore;
 
     private float elapsedTime;
     public int timeLimit;
@@ -21,6 +22,7 @@ public class UIController : MonoBehaviour
     void Update()
     {
         TimeLimit();
+        Score();
         
     }
 
@@ -38,6 +40,14 @@ public class UIController : MonoBehaviour
             Debug.Log("Fin");
             Time.timeScale = 0;
         }
-        
+    }
+
+    private void Score()
+    {
+        CollisionDetect DetectScript; //呼ぶスクリプトにあだなつける
+        GameObject obj = GameObject.Find("Head"); //Playerっていうオブジェクトを探す
+        DetectScript = obj.GetComponent<CollisionDetect>(); //付いているスクリプトを取得
+        var score = DetectScript.scoreCount;
+        TextScore.text = string.Format("Score " + score + "pts");
     }
 }

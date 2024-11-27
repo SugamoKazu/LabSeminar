@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CollisionDetect : MonoBehaviour
 {
+    public int scoreCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class CollisionDetect : MonoBehaviour
         if(other.gameObject.tag == "Mole")
         {
             Debug.Log("Hit");
-            
+            scoreCount++; 
             //Arduinoに信号を送る
         }
     }

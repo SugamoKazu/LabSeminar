@@ -20,7 +20,10 @@ public class HandMove : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-        Swing();
+        if(Input.GetKey("space"))
+        {
+            Swing();
+        }
         
     }
 
@@ -48,9 +51,6 @@ public class HandMove : MonoBehaviour
 
     private void Swing()
     {
-        if(Input.GetKey("space"))
-        {
-            
-        }
+        
     }
 }
