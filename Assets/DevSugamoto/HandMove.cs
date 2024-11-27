@@ -7,6 +7,8 @@ public class HandMove : MonoBehaviour
     private Transform myTransform;
     private Vector3 position;
 
+    public float speed; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,19 +21,19 @@ public class HandMove : MonoBehaviour
     {
         if(Input.GetKey("up"))
         {
-            position.z += 0.3f;
+            position.z += speed*0.1f;
         }
         if(Input.GetKey("right"))
         {
-            position.x += 0.3f;
+            position.x += speed*0.1f;
         }
         if(Input.GetKey("down"))
         {
-            position.z -= 0.3f;
+            position.z -= speed*0.1f;
         }
         if(Input.GetKey("left"))
         {
-            position.x -= 0.3f;
+            position.x -= speed*0.1f;
         }
 
         myTransform.position = position;
