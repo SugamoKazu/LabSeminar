@@ -20,10 +20,7 @@ public class HandMove : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-        if(Input.GetKey("space"))
-        {
-            Swing();
-        }
+        Swing();
         
     }
 
@@ -31,19 +28,19 @@ public class HandMove : MonoBehaviour
     {
         if(Input.GetKey("up"))
         {
-            position.z += speed*0.1f;
+            position.z += speed*0.2f;
         }
         if(Input.GetKey("right"))
         {
-            position.x += speed*0.1f;
+            position.x += speed*0.2f;
         }
         if(Input.GetKey("down"))
         {
-            position.z -= speed*0.1f;
+            position.z -= speed*0.2f;
         }
         if(Input.GetKey("left"))
         {
-            position.x -= speed*0.1f;
+            position.x -= speed*0.2f;
         }
 
         myTransform.position = position;
@@ -51,6 +48,13 @@ public class HandMove : MonoBehaviour
 
     private void Swing()
     {
-        
+        if(Input.GetKeyDown("space"))
+        {
+            myTransform.Rotate (60.0f, 0f, 0f);
+        }
+        if(Input.GetKeyUp("space"))
+        {
+            myTransform.Rotate (-60.0f, 0f, 0f);
+        }
     }
 }

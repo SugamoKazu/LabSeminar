@@ -21,9 +21,15 @@ public class MoleSpawn : MonoBehaviour
     {
         int rnd = Random.Range(0,9);
         interval++;
-        if((interval%300) == 1) //難易度調整による変更の余地あり
+        if((interval%120) == 1) //難易度調整による変更の余地あり
         {
-            Instantiate(Mole,SpawnPoints[rnd].transform);
+            Debug.Log(SpawnPoints[rnd].transform.childCount);
+
+            if(SpawnPoints[rnd].transform.childCount == 0)
+            {
+                Instantiate(Mole,SpawnPoints[rnd].transform);
+            }
+            
             
         }
     }

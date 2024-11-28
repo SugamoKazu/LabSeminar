@@ -45,9 +45,10 @@ public class UIController : MonoBehaviour
     private void Score()
     {
         CollisionDetect DetectScript; //呼ぶスクリプトにあだなつける
-        GameObject obj = GameObject.Find("Head"); //Playerっていうオブジェクトを探す
+        GameObject obj = GameObject.Find("Head"); //Playeっていうオブジェクトを探す
         DetectScript = obj.GetComponent<CollisionDetect>(); //付いているスクリプトを取得
         var score = DetectScript.scoreCount;
-        TextScore.text = string.Format("Score " + score + "pts");
+        TextScore.text = string.Format("Score " + score + " pts");
     }
+
 }

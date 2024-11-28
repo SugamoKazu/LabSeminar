@@ -23,7 +23,9 @@ public class CollisionDetect : MonoBehaviour
         {
             Debug.Log("Hit");
             scoreCount++; 
-            //Arduinoに信号を送る
+            
+            //Arduinoに振動させる信号を送る
         }
     }
+
 }

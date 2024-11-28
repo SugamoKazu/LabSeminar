@@ -9,13 +9,14 @@ public class MoleMove : MonoBehaviour
     private int moveCount = 0;
 
     public int stay;
+    public bool isMole = false;
 
     CapsuleCollider Col;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.transform.parent = null;
+        //this.gameObject.transform.parent = null;
 
         myTransform = this.transform;
         position = myTransform.position;
@@ -39,7 +40,7 @@ public class MoleMove : MonoBehaviour
         }
 
 
-        Debug.Log(moveVec);
+        //Debug.Log(moveVec);
         position.y += moveVec;
 
         if(moveCount == 40 + stay + 20) //難易度調整の余地あり
@@ -63,4 +64,5 @@ public class MoleMove : MonoBehaviour
             moveCount += 60;
         }
     }
+    
 }
