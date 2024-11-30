@@ -33,11 +33,9 @@ public class MoleSpawn : MonoBehaviour
             {
                 //Debug.Log(SpawnPoints[rnd].transform.childCount);
 
-                if(SpawnPoints[rnd].transform.childCount == 0)
-                {
-                    Instantiate(Mole,SpawnPoints[(rnd + i)%9].transform);
-                }
+                if(SpawnPoints[rnd].transform.childCount == 0) Instantiate(Mole,SpawnPoints[(rnd + i)%9].transform);
                 
+                //else Instantiate(Mole,SpawnPoints[(rnd + i + 3)%9].transform);
             }
         }
         

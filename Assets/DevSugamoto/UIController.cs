@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+//using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI TextTime;
     [SerializeField] private TextMeshProUGUI TextScore;
+    [SerializeField] private TextMeshProUGUI TextScoreSub;
+
+    [SerializeField] GameObject StartCanvas;
+    [SerializeField] GameObject GameCanvas;
+    [SerializeField] GameObject MenuCanvas;
 
     private float elapsedTime;
     public int timeLimit;
@@ -16,15 +22,25 @@ public class UIController : MonoBehaviour
     void Start()
     {
         elapsedTime = 0.0f;
+        ActivateOnlyStart();
+
+        
+        Debug.Log(Time.timeScale);
+        Time.timeScale = 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        Debug.Log(Time.timeScale);
+        
         TimeLimit();
         Score();
         
     }
+
 
     private void TimeLimit()
     {
@@ -39,6 +55,10 @@ public class UIController : MonoBehaviour
         {
             //Debug.Log("Fin");
             Time.timeScale = 0;
+            
+            MenuCanvas.SetActive(true);
+
+            //SceneManager.LoadScene("WhackAMole");
         }
     }
 
@@ -49,6 +69,13 @@ public class UIController : MonoBehaviour
         DetectScript = obj.GetComponent<CollisionDetect>(); //付いているスクリプトを取得
         var score = DetectScript.scoreCount;
         TextScore.text = string.Format("Score " + score + " pts");
+        TextScoreSub.text = string.Format("Score " + score + " pts");
     }
 
+    public void ActivateOnlyStart()
+    {
+        StartCanvas.SetActive(true);
+        GameCanvas.SetActive(false);
+        MenuCanvas.SetActive(false);
+    }
 }
