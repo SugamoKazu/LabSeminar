@@ -58,7 +58,7 @@ public class MoleMove : MonoBehaviour
         if(other.gameObject.tag == "Hammer")
         {
             //Debug.Log("Down");
-            myTransform.localScale = new Vector3(1, 0.1f, 1);
+            myTransform.localScale = new Vector3(1, 0.2f, 1);
             
             Col.enabled = false;
             moveCount += 60;

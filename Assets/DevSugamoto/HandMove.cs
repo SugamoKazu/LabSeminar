@@ -6,6 +6,7 @@ public class HandMove : MonoBehaviour
 {
     private Transform myTransform;
     private Vector3 position;
+    //private Quaternion targetRot = 60;
 
     public float speed; 
 
@@ -48,13 +49,13 @@ public class HandMove : MonoBehaviour
 
     private void Swing()
     {
+        //up
+        //swing
+        //back
         if(Input.GetKeyDown("space"))
         {
             myTransform.Rotate (60.0f, 0f, 0f);
         }
-        if(Input.GetKeyUp("space"))
-        {
-            myTransform.Rotate (-60.0f, 0f, 0f);
-        }
+        
     }
 }

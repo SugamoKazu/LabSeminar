@@ -9,7 +9,7 @@ public class MoleSpawn : MonoBehaviour
     public GameObject Mole;
     public GameObject[] SpawnPoints = new GameObject[9];
 
-    private int interval = 0;
+    private int interval, count;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,17 +20,26 @@ public class MoleSpawn : MonoBehaviour
     void FixedUpdate()
     {
         int rnd = Random.Range(0,9);
-        interval++;
-        if((interval%120) == 1) //難易度調整による変更の余地あり
-        {
-            Debug.Log(SpawnPoints[rnd].transform.childCount);
+        count++;
 
-            if(SpawnPoints[rnd].transform.childCount == 0)
+        interval = 30*Mathf.FloorToInt((Mathf.Pow(count/60,2))/900 - count/450 + 5);
+        Debug.Log(interval);
+
+        var Spawn = 1 + (300 - interval)/60;
+
+        if((count%interval) == 1) //難易度調整による変更の余地あり
+        {
+            for(int i = 0; i < Spawn; i++)
             {
-                Instantiate(Mole,SpawnPoints[rnd].transform);
+                //Debug.Log(SpawnPoints[rnd].transform.childCount);
+
+                if(SpawnPoints[rnd].transform.childCount == 0)
+                {
+                    Instantiate(Mole,SpawnPoints[(rnd + i)%9].transform);
+                }
+                
             }
-            
-            
         }
+        
     }
 }

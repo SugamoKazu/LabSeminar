@@ -37,7 +37,7 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Fin");
+            //Debug.Log("Fin");
             Time.timeScale = 0;
         }
     }
@@ -45,7 +45,7 @@ public class UIController : MonoBehaviour
     private void Score()
     {
         CollisionDetect DetectScript; //呼ぶスクリプトにあだなつける
-        GameObject obj = GameObject.Find("Head"); //Playeっていうオブジェクトを探す
+        GameObject obj = GameObject.Find("Head"); //オブジェクトを探す
         DetectScript = obj.GetComponent<CollisionDetect>(); //付いているスクリプトを取得
         var score = DetectScript.scoreCount;
         TextScore.text = string.Format("Score " + score + " pts");
