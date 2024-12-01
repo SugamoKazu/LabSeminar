@@ -25,7 +25,7 @@ public class CameraShake : MonoBehaviour
         
         if(ShakeCount > 0)
         {
-            Debug.Log("Sheke");
+            //Debug.Log("Shake");
             if(ShakeCount%4 == 0)
             {
                 Camera.transform.Rotate(0,shakeRange,0f,0f);

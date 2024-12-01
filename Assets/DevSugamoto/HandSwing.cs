@@ -4,23 +4,49 @@ using UnityEngine;
 
 public class HandSwing : MonoBehaviour
 {
-    private Vector3 pos;
-    private Quaternion rot;
+    public float rotateSpeed = 1,rotateAngle = 1;
+    private float targetAngleX;
+    Quaternion targetRotation;
  
     void Update()
     {
-        pos = transform.position;
-        rot = transform.rotation;
- 
-        print(rot.x);
-        Invoke("BRotate", 0.5f);
+        //Rot(-30);
+        
+        if(Input.GetKey("space"))
+        {
+            Debug.Log("Swing");
+            StartCoroutine(Swing());
+            //Rot(0);
+        }
+        
     }
  
-    void BRotate()
+    IEnumerator Swing()
     {
-        if (rot.x < 62f)
+        for(int i = 0; i < 30; i++) Rot(-15);
+        
+        yield return new WaitForSecondsRealtime(0.25f);
+        for(int i = 0; i < 30; i++) Rot(60);
+
+        yield return new WaitForSecondsRealtime(0.25f);
+        for(int i = 0; i < 30; i++) Rot(0);
+    
+    }
+
+    public void Rot(int Angle)
+    {      
+        Debug.Log(Angle); 
+        float targetAngleX = Angle;
+
+
+        targetRotation = Quaternion.Euler(targetAngleX, 0, 0);
+ 
+        //現在の回転から目標の回転に徐々に移行。
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, rotateSpeed * Time.deltaTime);
+        if (Mathf.Approximately(Quaternion.Angle(transform.localRotation, targetRotation), 0f))
         {
-            transform.Rotate(new Vector3(180, 0, 0) * Time.deltaTime);
-        }
+            //等しいと判断されたらターゲットの回転にする
+            transform.localRotation = targetRotation;
+        } 
     }
 }

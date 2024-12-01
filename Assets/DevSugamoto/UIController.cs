@@ -25,7 +25,7 @@ public class UIController : MonoBehaviour
         ActivateOnlyStart();
 
         
-        Debug.Log(Time.timeScale);
+        //Debug.Log(Time.timeScale);
         Time.timeScale = 0;
 
     }
@@ -34,7 +34,7 @@ public class UIController : MonoBehaviour
     void Update()
     {
         
-        Debug.Log(Time.timeScale);
+        //Debug.Log(Time.timeScale);
         
         TimeLimit();
         Score();
