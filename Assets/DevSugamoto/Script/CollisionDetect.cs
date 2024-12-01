@@ -31,6 +31,16 @@ public class CollisionDetect : MonoBehaviour
             
             //Arduinoに振動させる信号を送る
         }
+        if(other.gameObject.tag == "MoleG")
+        {
+            //Debug.Log("Hit");
+            scoreCount += 3;
+
+            isHit = true;
+            
+            
+            //Arduinoに振動させる信号を送る
+        }
     }
 
 }

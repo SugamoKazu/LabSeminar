@@ -7,6 +7,7 @@ TagManager:
   - Mole
   - Hole
   - Hammer
+  - MoleG
   layers:
   - Default
   - TransparentFX

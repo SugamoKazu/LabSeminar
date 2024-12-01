@@ -14,7 +14,7 @@ public class HandSwing : MonoBehaviour
         
         if(Input.GetKey("space"))
         {
-            Debug.Log("Swing");
+            //Debug.Log("Swing");
             StartCoroutine(Swing());
             //Rot(0);
         }
@@ -35,7 +35,7 @@ public class HandSwing : MonoBehaviour
 
     public void Rot(int Angle)
     {      
-        Debug.Log(Angle); 
+        //Debug.Log(Angle); 
         float targetAngleX = Angle;
 
 

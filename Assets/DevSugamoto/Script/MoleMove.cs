@@ -11,7 +11,7 @@ public class MoleMove : MonoBehaviour
     public int stay;
     public bool isMole = false;
 
-    CapsuleCollider Col;
+    CapsuleCollider Cap;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class MoleMove : MonoBehaviour
         myTransform = this.transform;
         position = myTransform.position;
 
-        Col = GetComponent<CapsuleCollider>();
+        Cap = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
@@ -60,8 +60,8 @@ public class MoleMove : MonoBehaviour
             //Debug.Log("Down");
             myTransform.localScale = new Vector3(1, 0.2f, 1);
             
-            Col.enabled = false;
-            moveCount += 60;
+            Cap.enabled = false;
+            //moveCount += 60;
         }
     }
     

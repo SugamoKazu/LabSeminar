@@ -1159,6 +1159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mole: {fileID: 4644013267439440449, guid: 166efdeb4ee60a4448248c0bb26fa49d, type: 3}
+  MoleG: {fileID: 4644013267439440449, guid: 7328067b8fa064946ba10931637a7884, type: 3}
   SpawnPoints:
   - {fileID: 1924360559}
   - {fileID: 1242394631}
