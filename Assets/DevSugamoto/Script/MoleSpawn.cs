@@ -54,7 +54,7 @@ public class MoleSpawn : MonoBehaviour
 
         if((count%interval) == 1) //難易度調整による変更の余地あり
         {
-            Debug.Log("Spawn" + interval);
+            //Debug.Log("Spawn" + interval);
             for(int i = 0; i < Spawn; i++)
             {
                 if(SpawnPoints[(rnd + 5*i)%9].transform.childCount == 0) Instantiate(Mole,SpawnPoints[(rnd + 5*i)%9].transform);

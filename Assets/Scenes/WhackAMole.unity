@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreCount: 0
+  ShakeTime: 0
   isHit: 0
 --- !u!1 &31594949
 GameObject:
