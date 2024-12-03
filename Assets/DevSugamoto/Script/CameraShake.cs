@@ -21,12 +21,12 @@ public class CameraShake : MonoBehaviour
         GameObject obj = GameObject.Find("Head"); //オブジェクトを探す
         DetectScript = obj.GetComponent<CollisionDetect>(); //付いているスクリプトを取得
         
-        Debug.Log(DetectScript.isHit);
+        //Debug.Log(DetectScript.isHit);
         if(DetectScript.isHit)ShakeCount = 16;
         
         if(ShakeCount > 0)
         {
-            Debug.Log("Shake");
+            //Debug.Log("Shake");
             if(ShakeCount%4 == 0)
             {
                 Camera.transform.Rotate(0,shakeRange,0f,0f);

@@ -16,6 +16,8 @@ public class CollisionDetect : MonoBehaviour
     void Update()
     {
         //Debug.Log(isHit);
+
+        
         if(ShakeTime > 0)
         {
             isHit = true;
