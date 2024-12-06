@@ -5,6 +5,7 @@ using UnityEngine;
 public class HandSwing : MonoBehaviour
 {
     public float rotateSpeed = 1,rotateAngle = 1;
+    public GameObject Hummer;
     private float targetAngleX;
     Quaternion targetRotation;
  
@@ -23,6 +24,7 @@ public class HandSwing : MonoBehaviour
  
     IEnumerator Swing()
     {
+
         for(int i = 0; i < 30; i++) Rot(-15);
         
         yield return new WaitForSecondsRealtime(0.25f);
@@ -30,6 +32,7 @@ public class HandSwing : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.25f);
         for(int i = 0; i < 30; i++) Rot(0);
+
     
     }
 

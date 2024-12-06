@@ -21,7 +21,7 @@ public class HandMove : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-        //Swing();
+        Twist();
         
     }
 
@@ -47,6 +47,17 @@ public class HandMove : MonoBehaviour
         myTransform.position = position;
     }
 
+    private void Twist()
+    {
+        if(Input.GetKey("a"))
+        {
+            myTransform.Rotate(0,0,3f);
+        }
+        if(Input.GetKey("d"))
+        {
+            myTransform.Rotate(0,0,-3f);
+        }
+    }
 /*
     private void Swing()
     {
