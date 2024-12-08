@@ -5,7 +5,7 @@ using UnityEngine;
 public class HandMove : MonoBehaviour
 {
     private Transform myTransform;
-    private Vector3 position;
+    private Vector3 position,rotation;
     //private Quaternion targetRot = 60;
 
     public float speed; 
@@ -15,6 +15,7 @@ public class HandMove : MonoBehaviour
     {
         myTransform = this.transform;
         position = myTransform.position;
+        rotation = myTransform.localEulerAngles;
     }
 
     // Update is called once per frame
@@ -43,6 +44,14 @@ public class HandMove : MonoBehaviour
         {
             position.x -= speed*0.2f;
         }
+
+        if(Input.GetKeyDown("s"))//リセット動作　←　ボタンで動作？
+        {
+            position -= myTransform.position;
+            myTransform.localEulerAngles = rotation;
+            
+        }
+
 
         myTransform.position = position;
     }
