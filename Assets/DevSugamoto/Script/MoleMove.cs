@@ -19,7 +19,7 @@ public class MoleMove : MonoBehaviour
         //this.gameObject.transform.parent = null;
 
         myTransform = this.transform;
-        position = myTransform.position;
+        position = myTransform.localPosition;
 
         Cap = GetComponent<CapsuleCollider>();
     }
@@ -48,7 +48,7 @@ public class MoleMove : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        myTransform.position = position;
+        myTransform.localPosition = position;
 
 
     }

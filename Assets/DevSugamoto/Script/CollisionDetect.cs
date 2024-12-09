@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollisionDetect : MonoBehaviour
 {
-    public int scoreCount = 0;
+    public int scoreCount = 0, ShakeTime = 0;
     public bool isHit = false;
     // Start is called before the first frame update
     void Start()
@@ -15,8 +15,18 @@ public class CollisionDetect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isHit = false;
         //Debug.Log(isHit);
+
+        
+        if(ShakeTime > 0)
+        {
+            isHit = true;
+            ShakeTime--;
+        }
+        else
+        {
+            isHit = false;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -41,6 +51,7 @@ public class CollisionDetect : MonoBehaviour
             
             //Arduinoに振動させる信号を送る
         }
+        ShakeTime = 1;
     }
 
 }

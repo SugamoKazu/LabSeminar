@@ -21,6 +21,7 @@ public class CameraShake : MonoBehaviour
         GameObject obj = GameObject.Find("Head"); //オブジェクトを探す
         DetectScript = obj.GetComponent<CollisionDetect>(); //付いているスクリプトを取得
         
+        //Debug.Log(DetectScript.isHit);
         if(DetectScript.isHit)ShakeCount = 16;
         
         if(ShakeCount > 0)
