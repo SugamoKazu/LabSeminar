@@ -11,6 +11,7 @@ public class ButtonClick : MonoBehaviour
     [SerializeField] GameObject StartCanvas;
     [SerializeField] GameObject GameCanvas;
     [SerializeField] GameObject MenuCanvas;
+    //[SerializeField] Button button;
 
 
     // Start is called before the first frame update
@@ -29,6 +30,7 @@ public class ButtonClick : MonoBehaviour
         }
         if(ButtonText.text == "PAUSE")
         {
+            Debug.Log("Click");
             Time.timeScale = 0;
             GameCanvas.SetActive(false);
             MenuCanvas.SetActive(true);
