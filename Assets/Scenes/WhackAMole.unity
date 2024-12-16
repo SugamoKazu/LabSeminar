@@ -2033,7 +2033,13 @@ MonoBehaviour:
   StartCanvas: {fileID: 1116918705}
   GameCanvas: {fileID: 610366646}
   MenuCanvas: {fileID: 1345032869}
+  Buttons:
+  - {fileID: 170545730}
+  - {fileID: 1622359300}
+  - {fileID: 1048221801}
+  - {fileID: 1648856717}
   timeLimit: 60
+  StateNum: 0
 --- !u!114 &585639188
 MonoBehaviour:
   m_ObjectHideFlags: 0

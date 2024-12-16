@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 //using UnityEngine.SceneManagement;
 
@@ -15,8 +16,10 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject GameCanvas;
     [SerializeField] GameObject MenuCanvas;
 
+    [SerializeField] Button[] Buttons;
+
     private float elapsedTime;
-    public int timeLimit;
+    public int timeLimit, StateNum;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,7 @@ public class UIController : MonoBehaviour
         elapsedTime = 0.0f;
         ActivateOnlyStart();
 
+        StateNum = 0;
         
         //Debug.Log(Time.timeScale);
         Time.timeScale = 0;
@@ -33,15 +37,54 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         //Debug.Log(Time.timeScale);
-        
+        Button();
         TimeLimit();
         Score();
         
     }
 
-
+    void Button()
+    {
+        if(StateNum == 0)
+        {
+            if(Input.GetKeyDown("s"))
+            {
+                Buttons[0].onClick.Invoke();
+                StateNum = 1;
+            }
+        }
+        else if(StateNum == 1)
+        {
+            if(Input.GetKeyDown("b"))
+            {
+                StateNum = 2;
+                Buttons[1].onClick.Invoke();
+            }
+        }
+        else if(StateNum == 2)
+        {
+            if(Input.GetKeyDown("s"))
+            {
+                Buttons[2].onClick.Invoke();
+                StateNum = 0;
+            }
+            if(Input.GetKeyDown("b"))
+            {
+                Buttons[3].onClick.Invoke();
+                StateNum = 1;
+            }
+        }
+        else
+        {
+            if(Input.GetKeyDown("s"))
+            {
+                Buttons[2].onClick.Invoke();
+                StateNum = 0;
+            }
+        }
+        
+    }
     private void TimeLimit()
     {
         elapsedTime += Time.deltaTime;
@@ -55,7 +98,7 @@ public class UIController : MonoBehaviour
         {
             //Debug.Log("Fin");
             Time.timeScale = 0;
-            
+            StateNum = 3;
             MenuCanvas.SetActive(true);
 
             //SceneManager.LoadScene("WhackAMole");
