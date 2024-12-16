@@ -62,7 +62,7 @@ public class HandMove : MonoBehaviour
     {
 
 
-        position = SensorVal;
+        //position = SensorVal;
 
         
 
