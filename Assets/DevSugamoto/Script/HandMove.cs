@@ -22,8 +22,10 @@ public class HandMove : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+
+        VRMove();  
         Twist();
-        
+              
     }
 
     private void Move()
@@ -51,6 +53,18 @@ public class HandMove : MonoBehaviour
             myTransform.localEulerAngles = rotation;
             
         }
+
+
+        myTransform.position = position;
+    }
+
+    private void VRMove()
+    {
+
+
+        position = SensorVal;
+
+        
 
 
         myTransform.position = position;
