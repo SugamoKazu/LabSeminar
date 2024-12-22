@@ -5,42 +5,56 @@ using System.Collections.Generic;
 public class ObjectController : MonoBehaviour
 {
     public SerialHandler serialHandler;
-    public float delta = 0.01f;
-    private float deltaPos;
-    private    Vector3 pos;
+    private Vector3 angle;
+    public GameObject Object;
+    private Vector3 _axis = Vector3.forward;
 
-    void Start()
+    private Transform _transform;
+private void Awake()
+{
+    // transformに毎回アクセスすると重いので、キャッシュしておく
+    _transform = transform;
+}
+
+void Start()
     {
         serialHandler.OnDataReceived += OnDataReceived;
     }
 
     void OnDataReceived(string message)
     {
-        Vector3 pos = transform.localPosition;
-        var data = message.Split(
-            new string[]{"\n"}, System.StringSplitOptions.None);
+        
         Debug.Log(message);
         
-        switch (data[0]){
-            case "Up":
-                deltaPos = delta * 1;
-                pos.y += deltaPos;
-                break;
-            case "Down":
-                deltaPos = delta * -1;
-                pos.y += deltaPos;
-                break;
-            case "Left":
-                deltaPos = delta * -1;
-                pos.x += deltaPos;
-                break;
-            case "Right":
-                deltaPos = delta * 1;
-                pos.x += deltaPos;
-                break;
-            default:
-                break;
-        }
-        transform.localPosition = pos;
-    }  
+
+        /*
+        string AcX = message.Substring(1, message.IndexOf("Y") - 1); // 追加
+        string AcY = message.Substring(message.IndexOf("Y") + 1); // 追加
+        AcY = AcY.Substring(0, AcY.IndexOf("Z") - 1); // 追加
+        string AcZ = message.Substring(message.IndexOf("Z") + 1); // 追加
+        AcZ = AcZ.Substring(0, AcZ.IndexOf("x") - 1); // 追加
+        string GyX = message.Substring(message.IndexOf("x") + 1); // 追加
+        GyX = GyX.Substring(0, GyX.IndexOf("y") - 1); // 追加
+        string GyY = message.Substring(message.IndexOf("y") + 1); // 追加
+        GyY = GyY.Substring(0, GyY.IndexOf("z") - 1); // 追加
+        string GyZ = message.Substring(message.IndexOf("z") + 1); // 追加
+        
+        
+        Debug.Log("AcX:" + AcX + " AcY:" + AcY + " AcZ:" + AcZ);
+        Debug.Log("GyX:" + GyX + " GyY:" + GyY + " GyZ:" + GyZ);
+        
+        angle = new Vector3(float.Parse(AcX)*90, float.Parse(AcY)*90, float.Parse(AcZ)*90);
+		Object.transform.rotation = Quaternion.Euler(angle);
+        */
+
+        
+        string acAngleX = message.Substring(1, message.IndexOf("Y") - 1); // 追加
+        string acAngleY = message.Substring(message.IndexOf("Y") + 1); // 追加
+
+        angle = new Vector3(float.Parse(acAngleX), 0 ,float.Parse(acAngleY));
+		Object.transform.rotation = Quaternion.Euler(angle);
+        
+
+
+    }
 }
