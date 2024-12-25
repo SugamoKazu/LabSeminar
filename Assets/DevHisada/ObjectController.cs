@@ -2,18 +2,23 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(Rigidbody))]
 public class ObjectController : MonoBehaviour
 {
     public SerialHandler serialHandler;
     private Vector3 angle;
     public GameObject Object;
     [SerializeField] private Vector3 _acceleration;
-    private Rigidbody _rigidbody;
-private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
+
+    public float time_speed = 10f;
+    public static float dt = 1.0f;
+    //private static float t = 1;
+
+    private Quaternion to_qua;
+    private Quaternion standard;
+
+    int i = 0;
+
+    private static int q_counter = 1;
 void Start()
     {
         serialHandler.OnDataReceived += OnDataReceived;
@@ -25,7 +30,7 @@ void Start()
         
         Debug.Log(message);
         
-        /*
+        
         string AcX = message.Substring(1, message.IndexOf("Y") - 1); // 追加
         string AcY = message.Substring(message.IndexOf("Y") + 1); // 追加
         AcY = AcY.Substring(0, AcY.IndexOf("Z") - 1); // 追加
@@ -37,7 +42,7 @@ void Start()
         GyY = GyY.Substring(0, GyY.IndexOf("z") - 1); // 追加
         string GyZ = message.Substring(message.IndexOf("z") + 1); // 追加
         
-        
+        /*
         Debug.Log("AcX:" + AcX + " AcY:" + AcY + " AcZ:" + AcZ);
         Debug.Log("GyX:" + GyX + " GyY:" + GyY + " GyZ:" + GyZ);
         
@@ -46,6 +51,7 @@ void Start()
 		Object.transform.rotation = Quaternion.Euler(angle);
         */
 
+        /*
         string AngleX = message.Substring(1, message.IndexOf("P") - 1); // 追加
         string AngleY = message.Substring(message.IndexOf("P") + 1); // 追加
         AngleY = AngleY.Substring(0, AngleY.IndexOf("x") - 1); // 追加
@@ -54,16 +60,29 @@ void Start()
         string AcY = message.Substring(message.IndexOf("y") + 1); // 追加
         AcY = AcY.Substring(0, AcY.IndexOf("z") - 1); // 追加
         string AcZ = message.Substring(message.IndexOf("z") + 1); // 追加
+        */
 
         //Debug.Log("AcX:" + AcX + " AcY:" + AcY + " AcZ:" + AcZ);
-
+        
+        /*
         angle = new Vector3(-float.Parse(AngleX), 0 , -float.Parse(AngleY));
 		Object.transform.rotation = Quaternion.Euler(angle);
-        
+        */
         
         // 加速度の時間積分から速度を求める
-
+        /*
         _acceleration = new Vector3(float.Parse(AcX)/1000, 0 , 0);
         _rigidbody.AddForce(_acceleration, ForceMode.Acceleration);
+        */
+
+        Vector3 GyroVec = new Vector3(-float.Parse(GyY)/10,-float.Parse(GyZ)/10,float.Parse(GyX)/10);
+        Vector3 AccVec = new Vector3(float.Parse(AcY)/10,-float.Parse(AcZ)*0,float.Parse(AcX)/10);
+
+        to_qua = this.transform.rotation * Quaternion.Euler(GyroVec * dt);
+        standard = this.transform.rotation;
+
+        this.transform.rotation = Quaternion.Slerp(standard, to_qua, Time.deltaTime * time_speed);
+
+        i++;
     }
 }
