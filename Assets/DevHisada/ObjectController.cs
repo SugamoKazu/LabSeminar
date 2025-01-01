@@ -25,7 +25,7 @@ void Start()
 
     void OnDataReceived(string message)
     {
-        //Debug.Log(message);
+        Debug.Log(message);
 
         Vector3 pos = this.transform.position;
         var data = message.Split(

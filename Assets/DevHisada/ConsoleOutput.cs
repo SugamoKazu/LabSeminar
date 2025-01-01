@@ -16,6 +16,6 @@ public class ConsoleOutput : MonoBehaviour
         var data = message.Split(
             new string[]{"\n"}, System.StringSplitOptions.None);
         if (data.Length != 1) return;
-        Debug.Log(data[0]);
+        //Debug.Log(data[0]);
     }
 }

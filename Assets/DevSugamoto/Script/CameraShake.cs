@@ -7,7 +7,7 @@ public class CameraShake : MonoBehaviour
     [SerializeField] GameObject Camera;
     public float shakeRange;
     private int ShakeCount;
-    public SerialHandler serialHandler;
+    public SerialHandler serialHandler; // SerialHandlerのインスタンスを取得
     int i = 0;
     // Start is called before the first frame update
     void Start()
@@ -23,11 +23,13 @@ public class CameraShake : MonoBehaviour
         DetectScript = obj.GetComponent<CollisionDetect>(); //付いているスクリプトを取得
         
         //Debug.Log(DetectScript.isHit);
-        if(DetectScript.isHit)ShakeCount = 16;
-        
-
+        if(DetectScript.isHit){
+            ShakeCount = 16;
+            serialHandler.Write("1");
+        }
         if(ShakeCount > 0)
         {
+
             if(ShakeCount%4 == 0)
             {
                 Camera.transform.Rotate(0,shakeRange,0f,0f);
@@ -37,6 +39,4 @@ public class CameraShake : MonoBehaviour
         }
         
     }
-
 }
-
