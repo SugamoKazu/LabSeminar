@@ -7,7 +7,8 @@ public class CameraShake : MonoBehaviour
     [SerializeField] GameObject Camera;
     public float shakeRange;
     private int ShakeCount;
-
+    public SerialHandler serialHandler;
+    int i = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +25,9 @@ public class CameraShake : MonoBehaviour
         //Debug.Log(DetectScript.isHit);
         if(DetectScript.isHit)ShakeCount = 16;
         
+
         if(ShakeCount > 0)
         {
-            //Debug.Log("Shake");
             if(ShakeCount%4 == 0)
             {
                 Camera.transform.Rotate(0,shakeRange,0f,0f);
@@ -36,4 +37,6 @@ public class CameraShake : MonoBehaviour
         }
         
     }
+
 }
+

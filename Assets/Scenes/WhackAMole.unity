@@ -2872,6 +2872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 963194225}
   shakeRange: 1.5
+  serialHandler: {fileID: 0}
 --- !u!1 &964856265
 GameObject:
   m_ObjectHideFlags: 0
@@ -4603,7 +4604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serialHandler: {fileID: 1988206998}
-  cube: {fileID: 1988206993}
+  time_speed: 10
 --- !u!114 &1988206998
 MonoBehaviour:
   m_ObjectHideFlags: 0

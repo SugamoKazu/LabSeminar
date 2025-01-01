@@ -28,6 +28,7 @@ public class SerialHandler : MonoBehaviour
         if (isNewMessageReceived_) {
             OnDataReceived(message_);
         }
+        isNewMessageReceived_ = false;
     }
 
     void OnDestroy()
