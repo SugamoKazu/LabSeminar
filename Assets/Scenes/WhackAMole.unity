@@ -2040,6 +2040,7 @@ MonoBehaviour:
   - {fileID: 1648856717}
   timeLimit: 60
   StateNum: 0
+  serialHandler: {fileID: 1988206998}
 --- !u!114 &585639188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2872,7 +2873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 963194225}
   shakeRange: 1.5
-  serialHandler: {fileID: 0}
+  serialHandler: {fileID: 1988206998}
 --- !u!1 &964856265
 GameObject:
   m_ObjectHideFlags: 0
@@ -4605,7 +4606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serialHandler: {fileID: 1988206998}
   time_speed: 10
-  delta: 0.01
+  delta: 0.1
 --- !u!114 &1988206998
 MonoBehaviour:
   m_ObjectHideFlags: 0

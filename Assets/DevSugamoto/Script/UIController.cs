@@ -20,7 +20,8 @@ public class UIController : MonoBehaviour
 
     private float elapsedTime;
     public int timeLimit, StateNum;
-
+    public SerialHandler serialHandler;
+    private string[] data;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class UIController : MonoBehaviour
         
         //Debug.Log(Time.timeScale);
         Time.timeScale = 0;
+        serialHandler.OnDataReceived += OnDataReceived;
 
     }
 
@@ -48,7 +50,7 @@ public class UIController : MonoBehaviour
     {
         if(StateNum == 0)
         {
-            if(Input.GetKeyDown("s"))
+            if(data[0] == "Reset")
             {
                 Buttons[0].onClick.Invoke();
                 StateNum = 1;
@@ -56,7 +58,7 @@ public class UIController : MonoBehaviour
         }
         else if(StateNum == 1)
         {
-            if(Input.GetKeyDown("b"))
+            if(data[0] == "UI")
             {
                 StateNum = 2;
                 Buttons[1].onClick.Invoke();
@@ -64,12 +66,13 @@ public class UIController : MonoBehaviour
         }
         else if(StateNum == 2)
         {
-            if(Input.GetKeyDown("s"))
+            if(data[0] == "Reset")
             {
                 Buttons[2].onClick.Invoke();
                 StateNum = 0;
+
             }
-            if(Input.GetKeyDown("b"))
+            if(data[0] == "Up")
             {
                 Buttons[3].onClick.Invoke();
                 StateNum = 1;
@@ -77,7 +80,7 @@ public class UIController : MonoBehaviour
         }
         else
         {
-            if(Input.GetKeyDown("s"))
+            if(data[0] == "Reset")
             {
                 Buttons[2].onClick.Invoke();
                 StateNum = 0;
@@ -120,5 +123,11 @@ public class UIController : MonoBehaviour
         StartCanvas.SetActive(true);
         GameCanvas.SetActive(false);
         MenuCanvas.SetActive(false);
+    }
+    void OnDataReceived(string message)
+    {
+        //Debug.Log(message);
+        data = message.Split(
+            new string[]{"\n"}, System.StringSplitOptions.None);
     }
 }

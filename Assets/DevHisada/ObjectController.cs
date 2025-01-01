@@ -18,18 +18,19 @@ public class ObjectController : MonoBehaviour
     private float b1GyX = 0,b2GyX = 0,b3GyX = 0,b4GyX = 0,b1GyY = 0,b2GyY = 0,b3GyY = 0,b4GyY = 0,b1GyZ = 0,b2GyZ = 0,b3GyZ = 0,b4GyZ = 0;
     private float aveAcX=0,aveAcY=0,aveAcZ=0,aveGyX=0,aveGyY=0,aveGyZ=0;
 
-void Start()
-    {
-        serialHandler.OnDataReceived += OnDataReceived;
-    }
+    void Start()
+        {
+            serialHandler.OnDataReceived += OnDataReceived;
+        }
 
     void OnDataReceived(string message)
     {
-        Debug.Log(message);
+        //Debug.Log(message);
 
         Vector3 pos = this.transform.position;
         var data = message.Split(
             new string[]{"\n"}, System.StringSplitOptions.None);
+        Debug.Log(data[0]);
 
         switch(data[0]){
             case "Reset":
@@ -50,6 +51,8 @@ void Start()
             case "Right":
                 deltaPos = delta * 1;
                 pos.x += deltaPos;
+                break;
+            case "UI":
                 break;
             default:
                 string AccX = message.Substring(1, message.IndexOf("Y") - 1); // 追加
@@ -104,9 +107,5 @@ void Start()
                 break;
         }
         transform.localPosition = pos;
-        
-
-        
-        
     }
 }
