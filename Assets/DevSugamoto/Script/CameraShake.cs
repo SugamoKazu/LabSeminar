@@ -26,11 +26,13 @@ public class CameraShake : MonoBehaviour
         if(DetectScript.isHit){
             serialHandler.Write("1");
             Debug.Log("1");
-            ShakeCount = 128;
+            //ShakeCount = 128;
+            ShakeCount = 16;
         }
+
         if(ShakeCount > 0)
         {
-            if(ShakeCount%4 == 0)
+            if(ShakeCount%4 == 0)// && ShakeCount > 100)
             {
                 Camera.transform.Rotate(0,shakeRange,0f,0f);
                 shakeRange *= -1;

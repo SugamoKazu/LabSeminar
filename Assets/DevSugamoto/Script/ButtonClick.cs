@@ -13,6 +13,10 @@ public class ButtonClick : MonoBehaviour
     [SerializeField] GameObject MenuCanvas;
     //[SerializeField] Button button;
 
+    [SerializeField] AudioSource ButtonASound;
+    [SerializeField] AudioSource ButtonBSound;
+    [SerializeField] AudioSource BGM;
+
 
     // Start is called before the first frame update
     public void OnClickButton()
@@ -21,25 +25,37 @@ public class ButtonClick : MonoBehaviour
         if(ButtonText.text == "RETRY")
         {
             SceneManager.LoadScene("WhackAMole");
+            ButtonASound.Play();
         }
         if(ButtonText.text == "START")
         {
             //Time.timeScale = 1;
             StartCanvas.SetActive(false);
             GameCanvas.SetActive(true);
+
+            //ButtonASound.Play();
         }
         if(ButtonText.text == "PAUSE")
         {
-            Debug.Log("Click");
-            Time.timeScale = 0;
-            GameCanvas.SetActive(false);
-            MenuCanvas.SetActive(true);
+            //Debug.Log("Click");
+            if(Time.timeScale == 1)
+            {
+                Time.timeScale = 0;
+                GameCanvas.SetActive(false);
+                MenuCanvas.SetActive(true);
+
+                ButtonASound.Play();
+                BGM.Pause();
+            }
         }
-        if(ButtonText.text == "×")
+        if(ButtonText.text == "CLOSE")
         {
             Time.timeScale = 1;
             GameCanvas.SetActive(true);
             MenuCanvas.SetActive(false);
+
+            ButtonBSound.Play();
+            BGM.UnPause();
         }
 
         

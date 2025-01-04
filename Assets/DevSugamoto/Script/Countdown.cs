@@ -7,6 +7,9 @@ public class Countdown : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI TextCountdown;
 
+    [SerializeField] AudioSource CountdownSound;
+    [SerializeField] AudioSource BGM;
+
     // Start is called before the first frame update
     public  void ClickStart()
     {
@@ -16,6 +19,8 @@ public class Countdown : MonoBehaviour
     IEnumerator CountDown()
     {
         Time.timeScale = 0;
+        
+        CountdownSound.Play();
 
         TextCountdown.text = "3";
 		yield return new WaitForSecondsRealtime(1.0f);
@@ -31,5 +36,6 @@ public class Countdown : MonoBehaviour
         
         TextCountdown.text = null;
         Time.timeScale = 1;
+        BGM.Play();
     } 
 }

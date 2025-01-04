@@ -17,7 +17,10 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject MenuCanvas;
 
     [SerializeField] Button[] Buttons;
-
+    
+    [SerializeField] AudioSource BGM;
+    [SerializeField] AudioSource FinishSound;
+    
     private float elapsedTime;
     public int timeLimit, StateNum;
     public SerialHandler serialHandler;
@@ -54,14 +57,18 @@ public class UIController : MonoBehaviour
             {
                 Buttons[0].onClick.Invoke();
                 StateNum = 1;
+
             }
         }
         else if(StateNum == 1)
         {
             if(data[0] == "UI")
             {
-                StateNum = 2;
-                Buttons[1].onClick.Invoke();
+                if(Time.timeScale == 1)
+                {
+                    StateNum = 2;
+                    Buttons[1].onClick.Invoke();
+                }
             }
         }
         else if(StateNum == 2)
@@ -93,16 +100,24 @@ public class UIController : MonoBehaviour
         elapsedTime += Time.deltaTime;
         var limit = timeLimit - elapsedTime;
 
-        if(limit >= 0)
+        if(limit >= 0.5)
         {
-            TextTime.text = string.Format("Time {0:f0} sec",limit);
+            TextTime.text = string.Format("{0:f0} s",limit);
+        }
+        else if(limit < 0.5 && limit > 0)
+        {
+            FinishSound.Play();
         }
         else
         {
             //Debug.Log("Fin");
+
+            TextTime.text = string.Format("0 s");
             Time.timeScale = 0;
             StateNum = 3;
             MenuCanvas.SetActive(true);
+
+            BGM.Stop();
 
             //SceneManager.LoadScene("WhackAMole");
         }

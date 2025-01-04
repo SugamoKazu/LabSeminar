@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CollisionDetect : MonoBehaviour
 {
+    [SerializeField] AudioSource HitSound;
+
     public int scoreCount = 0, ShakeTime = 0;
     public bool isHit = false;
     // Start is called before the first frame update
@@ -22,6 +24,9 @@ public class CollisionDetect : MonoBehaviour
         {
             isHit = true;
             ShakeTime--;
+            
+            HitSound.Play();
+
         }
         else
         {
@@ -34,8 +39,10 @@ public class CollisionDetect : MonoBehaviour
         if(other.gameObject.tag == "Mole")
         {
             //Debug.Log("Hit");
-            scoreCount++;
+            
+            HitSound.pitch = Random.Range(0.85f,0.90f);
 
+            scoreCount++;
             isHit = true;
             
             
@@ -44,8 +51,10 @@ public class CollisionDetect : MonoBehaviour
         if(other.gameObject.tag == "MoleG")
         {
             //Debug.Log("Hit");
-            scoreCount += 3;
+            
+            HitSound.pitch = Random.Range(1.0f,1.05f);
 
+            scoreCount += 3;
             isHit = true;
             
             

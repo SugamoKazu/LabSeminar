@@ -22,6 +22,8 @@ public class MoleMove : MonoBehaviour
         position = myTransform.localPosition;
 
         Cap = GetComponent<CapsuleCollider>();
+
+        GetComponent<AudioSource>().Play();
     }
 
     // Update is called once per frame
@@ -60,7 +62,10 @@ public class MoleMove : MonoBehaviour
             //Debug.Log("Down");
             myTransform.localScale = new Vector3(1, 0.2f, 1);
             
-            Cap.enabled = false;
+            //Cap.enabled = false;
+            Cap.radius = 0.2f;
+            //Cap.height = 0.0f;
+
             //moveCount += 60;
         }
     }
