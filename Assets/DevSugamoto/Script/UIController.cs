@@ -43,7 +43,7 @@ public class UIController : MonoBehaviour
     void Update()
     {
         //Debug.Log(Time.timeScale);
-        Button();
+        //Button();
         TimeLimit();
         Score();
         
@@ -116,6 +116,8 @@ public class UIController : MonoBehaviour
             Time.timeScale = 0;
             StateNum = 3;
             MenuCanvas.SetActive(true);
+            GameCanvas.SetActive(false);
+
 
             BGM.Stop();
 
