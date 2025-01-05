@@ -43,7 +43,7 @@ public class UIController : MonoBehaviour
     void Update()
     {
         //Debug.Log(Time.timeScale);
-        //Button();
+        Button();
         TimeLimit();
         Score();
         
